@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI SAAS Boilerplate 🤖
+A full project with all the necessary tools/lib/third parties to launch an AI SAAS 10x faster. In the project you will find all the modules needed for a business to run smoothly like authentication, , payment, error and live chat.
 
-## Getting Started
+## Technical aspects ℹ️
+The project is using NextJs framework. You need to install nodejs in your system and make sure to have npx already installed too (Links are below):
 
-First, run the development server:
+1- Install stable [nodejs version](https://nodejs.org/en/download/package-manager)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2- Install npx `` npm install -g npx ``
+
+Now when it comes to the databse, I picked postgre and with Prisma ORM I was able to handle all the different request to db and table.
+
+3- so you might either install local database and use the credential while developing new feature in the app.
+alternativewoudl be to opt for a cloud service. For me it was [render](https://dashboard.render.com/). (they provide you with FREE postgre DB)
+
+## Documentation 📝
+The project uses many third party services for the authentication, chat with customer and payment of subscription. Below you will find the service and the related docs so you can change or adapt them based on your preferences.
+
+* [Stripe](https://stripe.com/) : payment 💰 solution dedicated for the developer. [Docs](https://docs.stripe.com/)
+* [Crisp](https://crisp.chat/) : A chat 💬 box which can be integrated easily to website and allow real-time interaction with users. [Docs](https://docs.crisp.chat/)
+* [Clerk](https://clerk.com/): Authentication and user 👤 management tool based on Oaut 2.0. [Docs](https://clerk.com/docs)
+
+## Prequirements ⚠️
+Since the project uses thrid party libraires, you need to setup the token in your environment variable.
+So first create in the root folder of the project a new file called ``.env``
+
+After that please add the following variable with the exact name and make sure to fill every one of these after you have register in every service. (alternative you can change it based on your preferences)
+
+Example:
+
+```
+# keys and token related to authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<REPLACE_USER>
+CLERK_SECRET_KEY=<REPLACE_USER>
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Open ai key
+OPENAI_API_KEY =<REPLACE_USER>
+
+# Replicate key
+REPLICATE_API_KEY=<REPLACE_USER>
+
+# This was inserted by `prisma init`:
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="postgresql://<REPLACE_USER>:<REPLACE_HERE>.<REPLACE_USER>"
+
+# stripe key 
+STRIPE_API_KEY=<REPLACE_USER>
+STRIPE_WEBHOOK_SECRET=<REPLACE_USER>
+NEXT_PUBLIC_APP_URL=<REPLACE_USER>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run the project 🎬
+This is a nodeJs project, so in the end you can run the project with the following two command.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1- Install the dependencies ``npm i``
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2- Start the project locally``npm run dev``
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
